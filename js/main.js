@@ -30,13 +30,35 @@ $(document).ready(function(){
        {
            nome : 'fabio',
            cognome :'giorgini',
-       }
+       },
+
    ];
+
+   // 3 Dare la possibilità all’utente attraverso 3 prompt di aggiungere un nuovo oggetto studente all'array creato al punto 2 inserendo nell’ordine: nome, cognome e età.
+
+//    inserimento oggetto tramite prompt
+//    ****************************
+   var nome = prompt('inserisci nome');
+   var cognome = prompt('inserisci cognome');
+   var eta = parseInt ( prompt ('inserisci eta') );
+
+   var objectUser = {
+       nome,
+       cognome,
+       eta,
+   }
+   
+   studenti.push(objectUser);
+
 
    for (var i = 0; i < studenti.length; i++) {
        console.log(studenti[i]);
    }
 
-// ******************************
-    
+   
+   
+
+   
+
+
 }); //end doc ready
