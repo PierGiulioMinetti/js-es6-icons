@@ -119,12 +119,14 @@ function printIcons(icons, container) {
         `
         <div class="icon">
             <i class="${family} ${prefix}${name}"></i>
-            <div class="title"></div>
+            <div class="title">${name}</div>
         </div>
         `
         container.append(html);
         return
     });
+
+
 }
 
 
