@@ -99,34 +99,83 @@ const icons = [
       family: 'fas',
     },
 ];
+const colors = [
+      'blue', 
+      'orange', 
+      'purple'
+];
 
 // ICONS CONTAINER
-let container = $('.icons');
+const container = $('.icons');
 
-// PRINT ICONS ON SCREEN
-printIcons(icons, container);
+//1 PRINT ICONS ON SCREEN
+
+//2 PRINT WITH COLOR
+const coloredIcons = colorIcons(icons, colors);
+console.log(coloredIcons);
+printIcons(coloredIcons, container); //--*********> DECOMMENT TO WORK
 
 }); //end doc ready
 
-// FUNCTION
+
+
+/**
+ * PRINT ICONS ON SCREEN
+ */
 function printIcons(icons, container) {
 
-
     icons.forEach((icon)=>{
-        const {family, prefix, name} = icon;
+        const {family, prefix, name, color} = icon;
 
         const html = 
         `
         <div class="icon">
-            <i class="${family} ${prefix}${name}"></i>
+            <i class="${family} ${prefix}${name}"
+              style="color:${color}"></i>
             <div class="title">${name}</div>
         </div>
         `
         container.append(html);
-        return
+        
     });
 
+;}
 
-}
+// **
+// / COLORED ICONS
+// **
+
+function colorIcons(icons, colors){
+  // getTypes
+  const types = getTypes(icons);
+  console.log(types);
+  // Assign color by type
+  const coloredIcons = icons.map((icon)=>{
+    const indexType = types.indexOf(icon.type);
+
+    return {
+      ...icon,
+      color: colors[indexType]
+    }
+  });
+
+  return coloredIcons
+};
+
+
+
+// **
+// / GET ICONS TYPES
+// **
+function getTypes (icons){
+  const types = [];
+  icons.forEach((icon)=>{
+    if (!types.includes(icon.type)){
+      types.push(icon.type);
+    }
+   });
+   return types;
+};
+   
 
 
