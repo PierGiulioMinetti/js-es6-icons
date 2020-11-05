@@ -121,7 +121,12 @@ const types = getTypes(icons);
 //gen options
 genOption(types, select);
 //event change
-
+select.change(()=>{
+  const selected = select.val();
+  
+  const filteredIcons = filterIcons(coloredIcons, selected);
+  printIcons(filteredIcons, container);
+});
 
 
 }); //end doc ready
@@ -132,6 +137,8 @@ genOption(types, select);
  * PRINT ICONS ON SCREEN
  */
 function printIcons(icons, container) {
+
+  container.html('');
 
     icons.forEach((icon)=>{
         const {family, prefix, name, color} = icon;
@@ -198,4 +205,18 @@ function getTypes (icons){
  }
    
 
+/**
+ * FILTER ICONS DISPLAY
+ */
+function filterIcons(coloredIcons, selected){
 
+  if (selected === 'all') {
+    return coloredIcons;
+  }
+
+  const filtered = coloredIcons.filter((icon)=>{
+    return icon.type === selected;
+  });
+  return filtered;
+
+}
