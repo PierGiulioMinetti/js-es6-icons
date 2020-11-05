@@ -115,6 +115,15 @@ const coloredIcons = colorIcons(icons, colors);
 console.log(coloredIcons);
 printIcons(coloredIcons, container); //--*********> DECOMMENT TO WORK
 
+//3FILTER ICONS BY TYPE
+const select = $('#type');
+const types = getTypes(icons);
+//gen options
+genOption(types, select);
+//event change
+
+
+
 }); //end doc ready
 
 
@@ -176,6 +185,17 @@ function getTypes (icons){
    });
    return types;
 };
+
+
+/**
+ * GET OPTIONS BY TYPE
+ */
+
+ function genOption (types, select) {
+   types.forEach((opt)=>{
+    select.append(`<option value="${opt}">${opt}</option>`);
+   });
+ }
    
 
 
